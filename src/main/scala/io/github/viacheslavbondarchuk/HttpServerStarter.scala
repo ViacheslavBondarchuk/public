@@ -28,7 +28,7 @@ case object HttpServerStarter {
       val globalRoute: Route = GlobalRouteConcatenation.concatAll(this.createGlobalRoute(actorContext, actorSystem))
       serverBuilder.bind(globalRoute).onComplete {
         case success: Success[Http.ServerBinding] => actorSystem.log.info(s"HttpServer started at $host:$port")
-        case failure: Failure[Http.ServerBinding] => actorSystem.log.info(s"HttpServer failstarted at $host:$port, exception: ${failure.exception}")
+        case failure: Failure[Http.ServerBinding] => actorSystem.log.info(s"HttpServer fail started at $host:$port, exception: ${failure.exception}")
       }
       Behaviors.empty
     }
